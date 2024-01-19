@@ -1,28 +1,35 @@
+#include <float.h>
 #include <stdio.h>
 
 int main(void)
 {
-	int max = 10000;
+	int i;
+	double max_weight, min_weight;
+	double weight[3];
 
-	for (int i = 1; i <= max; i++)
+	weight[0] = 72.0;
+	weight[1] = 101.5;
+	weight[2] = 52.4;
+
+	max_weight = -DBL_MAX;
+	min_weight = DBL_MAX;
+
+	for (i = 0; i < 3; i++)
 	{
-		if (i % 221 == 0)
+
+		if (weight[i] >= max_weight)
 		{
-			printf("13Ç∆17Ç≈äÑÇÍÇÈêî");
+			max_weight = weight[i];
 		}
-		else if (i % 13 == 0)
+
+		if (weight[i] <= min_weight)
 		{
-			printf("13Ç≈äÑÇÍÇÈêî");
-		}
-		else if (i % 17 == 0)
-		{
-			printf("17Ç≈äÑÇÍÇÈêî");
-		}
-		else
-		{
-			printf("%8d\n", i);
+			min_weight = weight[i];
 		}
 	}
+
+	printf("àÍî‘èdÇ¢êlÇÕ, %g kg Ç≈Ç∑.\n", max_weight);
+	printf("àÍî‘åyÇ¢êlÇÕ, %g kg Ç≈Ç∑.\n", min_weight);
 
 	return 0;
 }
